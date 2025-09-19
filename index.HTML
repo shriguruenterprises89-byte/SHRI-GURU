@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shri Guru Enterprises</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .container-main {
+            max-width: 1024px;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        thead {
+            background-color: #e5e7eb;
+        }
+        th:first-child, td:first-child {
+            border-top-left-radius: 8px;
+        }
+        th:last-child, td:last-child {
+            border-top-right-radius: 8px;
+        }
+        tr:last-child td:first-child {
+            border-bottom-left-radius: 8px;
+        }
+        tr:last-child td:last-child {
+            border-bottom-right-radius: 8px;
+        }
+        tr:hover {
+            background-color: #f9fafb;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .search-input:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8 min-h-screen">
+    <div class="container-main bg-white shadow-xl rounded-2xl p-6 sm:p-10 w-full mb-8">
+        <!-- Header Section -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-2">
+                SHRI GURU ENTERPRISES
+            </h1>
+            <p class="text-sm text-gray-600">
+                SHOP NO. 27, D.NO.3-72/39, FIRST FLOOR, DREAMLAND ARCADE, NH 66, KARKADA VILLAGE, POST SALIGRAMA, BRAHMAVARA 576225
+            </p>
+            <p class="text-sm text-gray-600 mt-2">
+                Phone: 8147028389 | E-Mail: shriguruenterprises89@gmail.com
+            </p>
+            <p class="text-sm text-gray-600 font-medium">
+                GSTIN: 29AFOFS0446M1ZB
+            </p>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="mb-8">
+            <input type="text" id="searchInput" placeholder="Search for products..." class="search-input w-full p-3 rounded-lg border-2 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 shadow-sm">
+        </div>
+
+        <!-- Product Table -->
+        <section id="product-list" class="overflow-x-auto rounded-lg shadow-md border border-gray-200">
+            <h2 class="text-2xl font-bold text-gray-800 p-4 border-b border-gray-200">Product List</h2>
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-gray-600">S.No.</th>
+                        <th scope="col" class="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-gray-600">Brand</th>
+                        <th scope="col" class="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-gray-600">Description</th>
+                        <th scope="col" class="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-gray-600">M.R.P.</th>
+                        <th scope="col" class="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-gray-600">Rate</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody" class="bg-white divide-y divide-gray-200">
+                    <!-- Product data will be rendered here by JavaScript -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- About Us Section -->
+    <section id="about" class="container-main bg-white shadow-xl rounded-2xl p-6 sm:p-10 w-full mb-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">About Us</h2>
+        <p class="text-gray-600 leading-relaxed">
+            Shri Guru Enterprises is a trusted provider of high-quality products, serving our community with a commitment to excellence. We offer a wide range of goods to meet the diverse needs of our customers, all at competitive prices. Our dedication to service and customer satisfaction is what sets us apart.
+        </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container-main bg-white shadow-xl rounded-2xl p-6 sm:p-10 w-full mb-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">Contact Us</h2>
+        <div class="text-gray-600 leading-relaxed">
+            <p class="mb-2"><strong>Address:</strong> Shop No. 27, Dreamland Arcade, NH 66, Karkada Village, Post Saligrama, Brahmavara 576225</p>
+            <p class="mb-2"><strong>Phone:</strong> +91 8147028389</p>
+            <p class="mb-2"><strong>Email:</strong> shriguruenterprises89@gmail.com</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="container-main text-center text-gray-500 text-xs py-4 w-full">
+        &copy; 2024 Shri Guru Enterprises. All rights reserved.
+    </footer>
+
+    <script>
+        const products = [
+            // ABBOTT
+            { brand: "ABBOTT", sno: 1, description: "DIGENE MINT TAB 15'S", mrp: 29.20, rate: 20.86 },
+            { brand: "ABBOTT", sno: 2, description: "HUMAN ACTRAPID 40 IU 10ML", mrp: 178.29, rate: 142.63 },
+            { brand: "ABBOTT", sno: 3, description: "HUMAN MIXTARD 40 IU-VIAL 1'S", mrp: 181.39, rate: 145.11 },
+            { brand: "ABBOTT", sno: 4, description: "HUMAN MIXTARD 50 IU-VIAL 1'S", mrp: 292.30, rate: 233.84 },
+            { brand: "ABBOTT", sno: 5, description: "THYRONORM 100 MG 120'S", mrp: 180.09, rate: 128.64 },
+            { brand: "ABBOTT", sno: 6, description: "THYRONORM 150 MG 120'S", mrp: 232.45, rate: 166.04 },
+            { brand: "ABBOTT", sno: 7, description: "THYRONORM 25MG 120 S", mrp: 197.77, rate: 141.26 },
+            { brand: "ABBOTT", sno: 8, description: "THYRONORM 50 MG 120'S", mrp: 140.83, rate: 100.59 },
+            { brand: "ABBOTT", sno: 9, description: "THYRONORM 75 120'S", mrp: 196.24, rate: 140.17 },
+            { brand: "ABBOTT", sno: 10, description: "VERTIN 16 MG TAB 15'S", mrp: 393.65, rate: 281.18 },
+            { brand: "ABBOTT", sno: 11, description: "VERTIN 8 MG TAB 15'S", mrp: 213.69, rate: 152.44 },
+            
+            // ALKEM
+            { brand: "ALKEM", sno: 1, description: "A TO Z NS 15'S", mrp: 175.00, rate: 118.64 },
+            { brand: "ALKEM", sno: 2, description: "ALKOF DX SYP 100ML", mrp: 129.00, rate: 23.57 },
+            { brand: "ALKEM", sno: 3, description: "ALKOF ORANGE SYP 100ML", mrp: 93.00, rate: 21.39 },
+            { brand: "ALKEM", sno: 4, description: "ALKOF-DX SYP 60ML", mrp: 70.00, rate: 16.56 },
+            { brand: "ALKEM", sno: 5, description: "ALMOX 500 CAP 15'S", mrp: 125.71, rate: 48.88 },
+            { brand: "ALKEM", sno: 6, description: "OMEE CAPS 15'S", mrp: 65.41, rate: 26.24 },
+            { brand: "ALKEM", sno: 7, description: "OMEE D CAPS 15'S", mrp: 230.00, rate: 0.00 },
+            { brand: "ALKEM", sno: 8, description: "PAN 20 MG 15'S", mrp: 138.00, rate: 98.57 },
+            { brand: "ALKEM", sno: 9, description: "PAN 40MG TAB 15'S", mrp: 187.00, rate: 133.57 },
+            { brand: "ALKEM", sno: 10, description: "PAN D CAPS 15'S", mrp: 254.00, rate: 181.43 },
+            { brand: "ALKEM", sno: 11, description: "TAXIM O DRY SYRP 30ML", mrp: 55.57, rate: 39.69 },
+            
+            // APEX
+            { brand: "APEX", sno: 1, description: "ZINCOVIT SYR 200ML", mrp: 180.00, rate: 122.03 },
+            { brand: "APEX", sno: 2, description: "ZINCOVIT TAB 15'S", mrp: 115.00, rate: 77.97 },
+
+            // B-TEX
+            { brand: "B-TEX", sno: 1, description: "BE-TEX OINT 1'S", mrp: 30.00, rate: 21.78 },
+
+            // CENTAUR
+            { brand: "CENTAUR", sno: 1, description: "SINAREST NEW TAB 15'S", mrp: 131.88, rate: 94.20 },
+
+            // CIPLA
+            { brand: "CIPLA", sno: 1, description: "CHESTON COLD NF TAB 10 S", mrp: 70.18, rate: 22.05 },
+            { brand: "CIPLA", sno: 2, description: "CHESTON COLD NF TAB 10 S", mrp: 70.18, rate: 22.05 },
+            { brand: "CIPLA", sno: 3, description: "CIPCAL 500MG TAB 15'S", mrp: 104.66, rate: 21.24 },
+            { brand: "CIPLA", sno: 4, description: "CIPLADINE ANTISEP BANDAGE 100+36", mrp: 300.00, rate: 170.58 },
+            { brand: "CIPLA", sno: 5, description: "CIPLADINE CREAM 10GM", mrp: 35.13, rate: 21.36 },
+            { brand: "CIPLA", sno: 6, description: "CIPLADINE CREAM 20GM", mrp: 65.14, rate: 34.09 },
+            { brand: "CIPLA", sno: 7, description: "CIPLADINE OINT 10GM", mrp: 35.13, rate: 25.09 },
+            { brand: "CIPLA", sno: 8, description: "CIPLADINE POWDER 5% 10GM", mrp: 90.03, rate: 24.70 },
+            { brand: "CIPLA", sno: 9, description: "CIPLADINE QUICK RELIEF CALAMI 100ML", mrp: 90.00, rate: 27.05 },
+            { brand: "CIPLA", sno: 10, description: "CIPLADINE SOLU 100ML", mrp: 48.16, rate: 37.09 },
+            { brand: "CIPLA", sno: 11, description: "CLEARWAX EAR DROPS 10ML", mrp: 88.50, rate: 30.00 },
+            { brand: "CIPLA", sno: 12, description: "COFSILS GINGER LEMON 24+2", mrp: 38.00, rate: 23.24 },
+            { brand: "CIPLA", sno: 13, description: "COFSILS ORANGE 24+2", mrp: 38.00, rate: 23.24 },
+            { brand: "CIPLA", sno: 14, description: "FLUKA 150 TAB 1'S", mrp: 13.50, rate: 8.02 },
+            { brand: "CIPLA", sno: 15, description: "FOURDERM 20GM", mrp: 184.52, rate: 45.66 },
+            { brand: "CIPLA", sno: 16, description: "GLUCOSE++VIT C 125GM", mrp: 53.00, rate: 25.22 },
+            { brand: "CIPLA", sno: 17, description: "GLUCOSE++VIT D 125GM", mrp: 38.00, rate: 20.40 },
+            { brand: "CIPLA", sno: 18, description: "KETOCIP CT SOAP 75GM", mrp: 151.25, rate: 48.57 },
+            { brand: "CIPLA", sno: 19, description: "KETOCIP SOAP 75GM", mrp: 145.20, rate: 46.20 },
+            { brand: "CIPLA", sno: 20, description: "LULITEC CREAM 10GM", mrp: 153.06, rate: 34.25 },
+            { brand: "CIPLA", sno: 21, description: "NASALIN DROPS 10ML", mrp: 77.50, rate: 42.21 },
+            { brand: "CIPLA", sno: 22, description: "NASALIN NASAL SPRAY 10ML", mrp: 101.60, rate: 50.30 },
+            { brand: "CIPLA", sno: 23, description: "NASALIN NASAL SPRAY 10ML", mrp: 92.40, rate: 50.31 },
+            { brand: "CIPLA", sno: 24, description: "NICIP 100MG TAB 10 S", mrp: 43.45, rate: 6.20 },
+            { brand: "CIPLA", sno: 25, description: "NICIP AP TAB 10'S", mrp: 82.70, rate: 11.47 },
+            { brand: "CIPLA", sno: 26, description: "NICIP ASP TAB 10'S", mrp: 127.77, rate: 31.75 },
+            { brand: "CIPLA", sno: 27, description: "NICIP COLD AND FLU TAB 10'S", mrp: 70.18, rate: 22.93 },
+            { brand: "CIPLA", sno: 28, description: "NICIP PLUS TAB 10'S", mrp: 65.10, rate: 12.40 },
+            { brand: "CIPLA", sno: 29, description: "NICOTEX 2MG MINT PLUS STRIP 12'S", mrp: 121.00, rate: 84.34 },
+            { brand: "CIPLA", sno: 30, description: "NICOTEX 4MG MINT PLUS STRIP 12'S", mrp: 152.61, rate: 106.36 },
+            { brand: "CIPLA", sno: 31, description: "NOVACLAV 625 6'S", mrp: 122.97, rate: 0.00 },
+            { brand: "CIPLA", sno: 32, description: "OKACET L TAB 10'S", mrp: 75.86, rate: 5.71 },
+            { brand: "CIPLA", sno: 33, description: "OKACET TAB 10'S", mrp: 21.05, rate: 5.22 },
+            { brand: "CIPLA", sno: 34, description: "OMNIGEL 10GM", mrp: 65.30, rate: 29.36 },
+            { brand: "CIPLA", sno: 35, description: "OMNIGEL 20GM", mrp: 114.50, rate: 48.95 },
+            { brand: "CIPLA", sno: 36, description: "ORS ORANGE 200ML", mrp: 32.04, rate: 17.30 },
+            { brand: "CIPLA", sno: 37, description: "PANTOSEC DSR 10'S", mrp: 151.73, rate: 42.90 },
+            { brand: "CIPLA", sno: 38, description: "PARACIP DISPENSER 500MG 15'S", mrp: 15.12, rate: 10.00 },
+            { brand: "CIPLA", sno: 39, description: "PARACIP DISPENSER 650MG 15'S", mrp: 34.27, rate: 14.88 },
+            { brand: "CIPLA", sno: 40, description: "PARACIP SUSPENSION 60ML", mrp: 45.02, rate: 17.97 },
+            { brand: "CIPLA", sno: 41, description: "PROLYTE ELECTROSHOT APPLE 200ML", mrp: 45.00, rate: 23.13 },
+            { brand: "CIPLA", sno: 42, description: "PROLYTE ELECTROSHOT MANGO TET 200ML", mrp: 45.00, rate: 23.13 },
+            { brand: "CIPLA", sno: 43, description: "REACTIN 50 TAB 10'S", mrp: 22.96, rate: 7.93 },
+            { brand: "CIPLA", sno: 44, description: "REACTIN PLUS TAB 10'S", mrp: 31.46, rate: 9.13 },
+            { brand: "CIPLA", sno: 45, description: "SUHAGRA 100MG TAB 4'S", mrp: 232.32, rate: 0.00 },
+            { brand: "CIPLA", sno: 46, description: "SUHAGRA 100MG TAB 4'S", mrp: 232.32, rate: 0.00 },
+            { brand: "CIPLA", sno: 47, description: "SUHAGRA 50MG TAB 4'S", mrp: 146.41, rate: 0.00 },
+            { brand: "CIPLA", sno: 48, description: "SUHAGRA 50MG TAB 4'S", mrp: 146.41, rate: 0.00 },
+
+            // DR.REDDIES
+            { brand: "DR.REDDIES", sno: 1, description: "GLIMY M 15'S", mrp: 213.50, rate: 150.50 },
+            { brand: "DR.REDDIES", sno: 2, description: "GLIMY M 2 15'S", mrp: 289.25, rate: 206.61 },
+            { brand: "DR.REDDIES", sno: 3, description: "NISE TAB 15'S", mrp: 143.50, rate: 102.50 },
+            { brand: "DR.REDDIES", sno: 4, description: "OMEZ 20 MG CAP 20'S", mrp: 65.31, rate: 46.65 },
+            { brand: "DR.REDDIES", sno: 5, description: "OMEZ D SR PLUS 15'S", mrp: 247.00, rate: 176.43 },
+            { brand: "DR.REDDIES", sno: 6, description: "RECLIMET TAB 15'S", mrp: 281.25, rate: 200.90 },
+
+            // GLENMARK
+            { brand: "GLENMARK", sno: 1, description: "ALEX SYP 100ML", mrp: 154.50, rate: 110.36 },
+            { brand: "GLENMARK", sno: 2, description: "ASCORIL EXPT 120ML", mrp: 168.50, rate: 120.36 },
+            { brand: "GLENMARK", sno: 3, description: "CANDID B LOTION 10ML", mrp: 125.00, rate: 89.29 },
+            { brand: "GLENMARK", sno: 4, description: "CANDID CREAM 30GM", mrp: 100.80, rate: 72.00 },
+            { brand: "GLENMARK", sno: 5, description: "TELMA 20 30'S", mrp: 129.59, rate: 92.57 },
+            { brand: "GLENMARK", sno: 6, description: "TELMA 40 30'S", mrp: 227.14, rate: 162.24 },
+            { brand: "GLENMARK", sno: 7, description: "TELMA H TAB 15'S", mrp: 347.50, rate: 248.22 },
+
+            // GSK
+            { brand: "GSK", sno: 1, description: "CALPOL 250MG SUSP 60ML", mrp: 45.70, rate: 32.64 },
+
+            // INTAS
+            { brand: "INTAS", sno: 1, description: "HIFENAC P TAB 15'S", mrp: 114.00, rate: 81.43 },
+            { brand: "INTAS", sno: 2, description: "HIFENAC SP TAB 10'S", mrp: 133.75, rate: 95.54 },
+            { brand: "INTAS", sno: 3, description: "HIFENAC SR 10'S", mrp: 99.00, rate: 70.71 },
+            { brand: "INTAS", sno: 4, description: "LOOZ SYP 240 ML", mrp: 309.96, rate: 236.16 },
+            { brand: "INTAS", sno: 5, description: "PANTIUM D SR 10'S", mrp: 177.00, rate: 126.43 },
+            { brand: "INTAS", sno: 6, description: "PANTIUM D SR 10'S", mrp: 177.00, rate: 126.43 },
+            { brand: "INTAS", sno: 7, description: "RABIUM DSR TAB 15'S", mrp: 232.00, rate: 165.71 },
+            { brand: "INTAS", sno: 8, description: "RABIUM DSR TAB 15'S", mrp: 232.00, rate: 165.71 },
+            
+            // J B CHEMICALS
+            { brand: "J B CHEMICALS", sno: 1, description: "CILACAR 10 TAB 15'S", mrp: 234.09, rate: 167.22 },
+
+            // JOHNSON&JOHNSON
+            { brand: "JOHNSON&JOHNSON", sno: 1, description: "BENADRYL COUGH 150 ML", mrp: 170.00, rate: 125.44 },
+
+            // LABORATE
+            { brand: "LABORATE", sno: 1, description: "KT5 DERM 15GM", mrp: 126.50, rate: 17.25 },
+
+            // MACLEODS
+            { brand: "MACLEODS", sno: 1, description: "MACPOD 200 TAB 10'S", mrp: 224.85, rate: 160.61 },
+            { brand: "MACLEODS", sno: 2, description: "SENSICLAV 625 TAB 10'S", mrp: 189.13, rate: 135.10 },
+
+            // MANKIND
+            { brand: "MANKIND", sno: 1, description: "AMLOKIND 5 TAB 15'S", mrp: 25.26, rate: 18.04 },
+            { brand: "MANKIND", sno: 2, description: "AMLOKIND AT TAB 15'S", mrp: 53.95, rate: 38.54 },
+            { brand: "MANKIND", sno: 3, description: "AMLOKIND AT TAB 15'S", mrp: 59.34, rate: 42.39 },
+            { brand: "MANKIND", sno: 4, description: "ASTHAKIND EXP 100ML", mrp: 110.00, rate: 78.57 },
+            { brand: "MANKIND", sno: 5, description: "CILAHEART 10MG TAB 15'S", mrp: 168.82, rate: 120.59 },
+            { brand: "MANKIND", sno: 6, description: "GLIMESTAR M 1 10'S", mrp: 79.90, rate: 57.07 },
+            { brand: "MANKIND", sno: 7, description: "GLIMESTAR M2 10'S", mrp: 115.00, rate: 82.14 },
+            { brand: "MANKIND", sno: 8, description: "MEFKIND FORTE SUSPENSION 60ML", mrp: 67.00, rate: 47.86 },
+            { brand: "MANKIND", sno: 9, description: "MONTICOP 10'S", mrp: 109.89, rate: 78.49 },
+            { brand: "MANKIND", sno: 10, description: "MONTICOP KID TAB 10'S", mrp: 79.90, rate: 57.07 },
+            { brand: "MANKIND", sno: 11, description: "TELMIKIND 40 10'S", mrp: 44.01, rate: 31.44 },
+            { brand: "MANKIND", sno: 12, description: "TELMIKIND-H 40 TAB 10'S", mrp: 99.22, rate: 70.87 },
+            { brand: "MANKIND", sno: 13, description: "VENTIDOX M TAB 10'S", mrp: 116.90, rate: 83.50 },
+            { brand: "MANKIND", sno: 14, description: "VOMIKIND FAST STRIP 1 S", mrp: 20.30, rate: 14.50 },
+
+            // MEDKLEIN
+            { brand: "MEDKLEIN", sno: 1, description: "CANDIBEX DUSTING POWDER 100HM", mrp: 130.00, rate: 0.00 },
+            { brand: "MEDKLEIN", sno: 2, description: "CEFIGERM 200DT TAB 10 S", mrp: 109.42, rate: 44.40 },
+            { brand: "MEDKLEIN", sno: 3, description: "EVOVOLT TETRA PACK 200ML", mrp: 41.00, rate: 15.00 },
+            { brand: "MEDKLEIN", sno: 4, description: "GLIMZIM M1 TAB 10 S", mrp: 50.00, rate: 0.00 },
+            { brand: "MEDKLEIN", sno: 5, description: "GLIMZIM M2 TAB 10'S", mrp: 60.00, rate: 0.00 },
+            { brand: "MEDKLEIN", sno: 6, description: "KLIACET 5 TAB 10'S", mrp: 35.00, rate: 5.25 },
+            { brand: "MEDKLEIN", sno: 7, description: "KLIACET MT TAB 10'S", mrp: 119.90, rate: 23.00 },
+            { brand: "MEDKLEIN", sno: 8, description: "KLIGESIC HOT GEL 30GM", mrp: 85.00, rate: 27.55 },
+            { brand: "MEDKLEIN", sno: 9, description: "KLINDIC 75 TRAY 1ML", mrp: 25.00, rate: 0.00 },
+            { brand: "MEDKLEIN", sno: 10, description: "KLINMOL 650 BLUE 10'S", mrp: 22.40, rate: 0.00 },
+            { brand: "MEDKLEIN", sno: 11, description: "KLITHOX 250 TAB 6", mrp: 78.22, rate: 33.80 },
+            { brand: "MEDKLEIN", sno: 12, description: "KLITHOX 500 TAB 5'S", mrp: 134.28, rate: 56.25 },
+            { brand: "MEDKLEIN", sno: 13, description: "KLIZOLE DSR CAP 10'S", mrp: 100.00, rate: 0.00 },
+            { brand: "MEDKLEIN", sno: 14, description: "KOFKLIN PLUS TAB 10'S", mrp: 50.00, rate: 12.60 },
+            { brand: "MEDKLEIN", sno: 15, description: "LUGUARD CREAM 30GM", mrp: 180.00, rate: 52.00 },
+            { brand: "MEDKLEIN", sno: 16, description: "MOXGLOB CV 625 TAB 10'S", mrp: 208.54, rate: 82.50 },
+            { brand: "MEDKLEIN", sno: 17, description: "POVIDAY MOUTH GARGLE 100ML", mrp: 140.00, rate: 45.00 },
+            { brand: "MEDKLEIN", sno: 18, description: "RAZOZAC 20 TAB 10'S", mrp: 60.00, rate: 11.00 },
+            { brand: "MEDKLEIN", sno: 19, description: "RAZOZAC DSR CAP 10'S", mrp: 99.00, rate: 21.25 },
+
+            // MEYER
+            { brand: "MEYER", sno: 1, description: "BABYGESIC DROPS 15ML", mrp: 25.19, rate: 17.99 },
+            { brand: "MEYER", sno: 2, description: "CALCIMAX FORTE PLUS TAB 30'S", mrp: 313.00, rate: 223.57 },
+            { brand: "MEYER", sno: 3, description: "CALCIMAX OP PLUS TAB 15ML", mrp: 394.00, rate: 281.43 },
+            { brand: "MEYER", sno: 4, description: "CALCIMAX P SYP 200ML", mrp: 187.00, rate: 133.57 },
+            { brand: "MEYER", sno: 5, description: "CALCIMAX PLUS SUSP 200ML", mrp: 171.00, rate: 122.14 },
+            { brand: "MEYER", sno: 6, description: "CALCIMAX TOTAL 15'S", mrp: 344.00, rate: 245.71 },
+            { brand: "MEYER", sno: 7, description: "ULTRA D3 DROPS 15ML", mrp: 44.60, rate: 31.86 },
+
+            // MICRO LABS
+            { brand: "MICRO LABS", sno: 1, description: "DOLO 650 TAB 15'S", mrp: 34.27, rate: 24.48 },
+            { brand: "MICRO LABS", sno: 2, description: "ELDOPER CAPS 15'S", mrp: 63.67, rate: 45.48 },
+            
+            // P&G HEALTH
+            { brand: "P&G HEALTH", sno: 1, description: "EVION 400 MG TAB 20'S", mrp: 95.55, rate: 68.25 },
+            { brand: "P&G HEALTH", sno: 2, description: "EVION LC TAB 10'S", mrp: 68.84, rate: 49.16 },
+            { brand: "P&G HEALTH", sno: 3, description: "NEUROBION FORTE TAB 30'S", mrp: 46.10, rate: 34.57 },
+
+            // PFIZER
+            { brand: "PFIZER", sno: 1, description: "BECOSULES CAPS 20'S", mrp: 66.53, rate: 49.89 },
+
+            // SANWISH PHARMA
+            { brand: "SANWISH PHARMA", sno: 1, description: "ACSAN TH4 TAB 10'S", mrp: 199.00, rate: 142.14 },
+            { brand: "SANWISH PHARMA", sno: 2, description: "PANWISH D TAB 10'S", mrp: 119.00, rate: 85.00 },
+
+            // STEDMAN PHARMA
+            { brand: "STEDMAN PHARMA", sno: 1, description: "DREZ OINTMENT 15'GM", mrp: 130.00, rate: 92.86 },
+
+            // SUN PHARMA
+            { brand: "SUN PHARMA", sno: 1, description: "PROLOMET AM 50 TAB 10'S", mrp: 161.00, rate: 115.00 },
+            { brand: "SUN PHARMA", sno: 2, description: "SILVEREX IONIC 10'GM", mrp: 112.00, rate: 80.00 },
+
+            // SYSTOPIC
+            { brand: "SYSTOPIC", sno: 1, description: "AF 150(RX) 1'S", mrp: 13.02, rate: 9.30 },
+            { brand: "SYSTOPIC", sno: 2, description: "AIR M TAB 10'S", mrp: 72.00, rate: 51.42 },
+            { brand: "SYSTOPIC", sno: 3, description: "CYRA TAB 10'S", mrp: 30.00, rate: 21.42 },
+            { brand: "SYSTOPIC", sno: 4, description: "CYRA-D 10'S", mrp: 51.00, rate: 36.42 },
+            { brand: "SYSTOPIC", sno: 5, description: "ETOS P 10'S", mrp: 64.00, rate: 45.71 },
+            { brand: "SYSTOPIC", sno: 6, description: "ETOS P 10'S", mrp: 64.00, rate: 45.71 },
+            { brand: "SYSTOPIC", sno: 7, description: "FEBZEAL 40MG TAB 10'S", mrp: 82.00, rate: 58.57 },
+            { brand: "SYSTOPIC", sno: 8, description: "GIFTAN HC 10'S", mrp: 50.00, rate: 35.71 },
+            { brand: "SYSTOPIC", sno: 9, description: "ISRYL-M1 MG 15'S", mrp: 45.00, rate: 32.14 },
+            { brand: "SYSTOPIC", sno: 10, description: "ISRYL-M1 MG 15'S", mrp: 45.00, rate: 32.14 },
+            { brand: "SYSTOPIC", sno: 11, description: "ISRYL-M2 15'S", mrp: 67.50, rate: 48.21 },
+            { brand: "SYSTOPIC", sno: 12, description: "ISRYL-M2 15'S", mrp: 67.50, rate: 48.21 },
+            { brand: "SYSTOPIC", sno: 13, description: "ITRASYS 100MG 4'S", mrp: 47.00, rate: 33.57 },
+            { brand: "SYSTOPIC", sno: 14, description: "ITRASYS SB-130 10'S", mrp: 220.00, rate: 157.14 },
+            { brand: "SYSTOPIC", sno: 15, description: "ITRASYS SB-130 10'S", mrp: 220.00, rate: 157.14 },
+            { brand: "SYSTOPIC", sno: 16, description: "KINETOZYME D TAB 10 S", mrp: 149.00, rate: 106.42 },
+            { brand: "SYSTOPIC", sno: 17, description: "L-SYS CREAM 10GM", mrp: 112.00, rate: 80.00 },
+            { brand: "SYSTOPIC", sno: 18, description: "L-SYS CREAM 30GM", mrp: 255.00, rate: 182.14 },
+            { brand: "SYSTOPIC", sno: 19, description: "LEVOSIZ 5MG TAB 15'S", mrp: 33.00, rate: 23.57 },
+            { brand: "SYSTOPIC", sno: 20, description: "LEVOSIZ 5MG TAB 15'S", mrp: 33.00, rate: 23.57 },
+            { brand: "SYSTOPIC", sno: 21, description: "LEVOSIZ 5MG TAB 15'S", mrp: 33.00, rate: 23.57 },
+            { brand: "SYSTOPIC", sno: 22, description: "LEVOSIZ-M TAB 15'S", mrp: 108.00, rate: 77.14 },
+            { brand: "SYSTOPIC", sno: 23, description: "M-SYS OINT 10GM", mrp: 136.80, rate: 97.71 },
+            { brand: "SYSTOPIC", sno: 24, description: "M-SYS OINT 10GM", mrp: 134.50, rate: 96.07 },
+            { brand: "SYSTOPIC", sno: 25, description: "NEWTEL 40 10'S", mrp: 46.50, rate: 33.21 },
+            { brand: "SYSTOPIC", sno: 26, description: "NEWTEL 40 10'S", mrp: 46.50, rate: 33.21 },
+            { brand: "SYSTOPIC", sno: 27, description: "NEWTEL AM TAB 10'S", mrp: 52.00, rate: 37.14 },
+            { brand: "SYSTOPIC", sno: 28, description: "NEWTEL AMH 10'S", mrp: 54.00, rate: 38.57 },
+            { brand: "SYSTOPIC", sno: 29, description: "NEWTEL AMH 10'S", mrp: 54.00, rate: 38.57 },
+            { brand: "SYSTOPIC", sno: 30, description: "NEWTEL BETA 25 TAB 10'S", mrp: 54.00, rate: 38.57 },
+            { brand: "SYSTOPIC", sno: 31, description: "NEWTEL-H40 10'S", mrp: 51.00, rate: 36.42 },
+            { brand: "SYSTOPIC", sno: 32, description: "NORMAXIN TAB 20'S", mrp: 60.00, rate: 42.85 },
+            { brand: "SYSTOPIC", sno: 33, description: "ORVAS-FT TAB 10'S", mrp: 82.00, rate: 58.57 },
+            { brand: "SYSTOPIC", sno: 34, description: "PIOPLUS 2 15'S", mrp: 115.50, rate: 82.50 },
+            { brand: "SYSTOPIC", sno: 35, description: "PIOPLUS 2 15'S", mrp: 115.50, rate: 82.50 },
+            { brand: "SYSTOPIC", sno: 36, description: "SITASYS-M 10'S", mrp: 85.00, rate: 60.71 },
+            { brand: "SYSTOPIC", sno: 37, description: "SYSFOL PLUS 10'S", mrp: 49.00, rate: 35.00 },
+            { brand: "SYSTOPIC", sno: 38, description: "TERBEST 7'S", mrp: 105.00, rate: 75.00 },
+
+            // TORRENT
+            { brand: "TORRENT", sno: 1, description: "NEXPRO 40 MG TAB 20'S", mrp: 200.00, rate: 142.86 },
+            { brand: "TORRENT", sno: 2, description: "NEXPRO RD 40 CAPS 10'S", mrp: 195.00, rate: 139.29 },
+            { brand: "TORRENT", sno: 3, description: "SHELCAL 500 MG TABS 15'S", mrp: 158.60, rate: 113.29 },
+
+            // UNIVERSAL TWIN LAB
+            { brand: "UNIVERSAL TWIN LAB", sno: 1, description: "DERMI 5 CREAM 15GM", mrp: 54.45, rate: 0.00 },
+
+            // USV
+            { brand: "USV", sno: 1, description: "ECOSPRIN AV 150/20 CAP 10'S", mrp: 52.25, rate: 39.19 },
+            { brand: "USV", sno: 2, description: "ECOSPRIN AV 75MG TAB 15'S", mrp: 65.30, rate: 48.97 },
+            { brand: "USV", sno: 3, description: "GLYCOMET GP 0.5MG 10'S", mrp: 63.20, rate: 45.14 },
+            { brand: "USV", sno: 4, description: "GLYCOMET GP 1 15'S", mrp: 131.50, rate: 93.93 },
+            { brand: "USV", sno: 5, description: "GLYCOMET GP 2 FORTE 10S", mrp: 122.50, rate: 87.50 },
+            { brand: "USV", sno: 6, description: "GLYCOMET GP 2 FORTE 10S", mrp: 123.20, rate: 88.00 },
+            { brand: "USV", sno: 7, description: "GLYCOMET GP 2 MG 15'S", mrp: 192.00, rate: 137.14 },
+            { brand: "USV", sno: 8, description: "ROSEDAY 10MG 15'S", mrp: 227.00, rate: 162.14 },
+            { brand: "USV", sno: 9, description: "ROSEDAY 5MG TAB 15'S", mrp: 132.20, rate: 94.43 },
+            { brand: "USV", sno: 10, description: "ROSEDAY A 10 MG TAB 10'S", mrp: 95.15, rate: 67.91 },
+            { brand: "USV", sno: 11, description: "ROSEDAY GOLD 20 10'S", mrp: 278.10, rate: 198.64 },
+            { brand: "USV", sno: 12, description: "TAZLOC 40 TAB 15'S", mrp: 103.06, rate: 73.62 },
+
+            // VERITAZ HEALTHCARE
+            { brand: "VERITAZ HEALTHCARE", sno: 1, description: "FEPANIL 250MG LIQUID 60ML", mrp: 45.70, rate: 32.64 },
+            { brand: "VERITAZ HEALTHCARE", sno: 2, description: "FEPANIL 250MG LIQUID 60ML", mrp: 45.70, rate: 32.64 },
+
+            // ZOIC LIFE SCIENCES
+            { brand: "ZOIC LIFE SCIENCES", sno: 1, description: "ASTHARIL-DMR SYP 100ML", mrp: 119.00, rate: 0.00 },
+            { brand: "ZOIC LIFE SCIENCES", sno: 2, description: "ASTHARIL-LS SYP 100ML", mrp: 129.00, rate: 0.00 },
+            { brand: "ZOIC LIFE SCIENCES", sno: 3, description: "BI-CLAV-LB TAB 10'S", mrp: 248.00, rate: 87.80 },
+            { brand: "ZOIC LIFE SCIENCES", sno: 4, description: "ELECTROFIL SACHETS 20GM", mrp: 23.11, rate: 0.00 },
+            { brand: "ZOIC LIFE SCIENCES", sno: 5, description: "ELECTROFILL ORS ORANGE 200ML", mrp: 31.50, rate: 15.00 },
+            { brand: "ZOIC LIFE SCIENCES", sno: 6, description: "FUSISTAR CREAM 15GM", mrp: 129.00, rate: 0.00 },
+            { brand: "ZOIC LIFE SCIENCES", sno: 7, description: "KOOLCAP-D CAP 15'S", mrp: 89.90, rate: 0.00 },
+            { brand: "ZOIC LIFE SCIENCES", sno: 8, description: "L-OCIN-OZ TAB 10'S", mrp: 109.90, rate: 27.00 },
+            { brand: "ZOIC LIFE SCIENCES", sno: 9, description: "PENTAKOOL-40 TAB 10'S", mrp: 69.90, rate: 12.75 },
+            { brand: "ZOIC LIFE SCIENCES", sno: 10, description: "PENTAKOOL-D TAB 10'S", mrp: 74.50, rate: 21.25 },
+            { brand: "ZOIC LIFE SCIENCES", sno: 11, description: "T-DIP 500 TAB 20'S", mrp: 20.60, rate: 9.60 },
+            { brand: "ZOIC LIFE SCIENCES", sno: 12, description: "T-DIP 650 TAB 15'S", mrp: 32.80, rate: 11.46 },
+
+            // ZYDUS
+            { brand: "ZYDUS", sno: 1, description: "AMLODAC 5MG TAB 30'S", mrp: 85.34, rate: 60.96 },
+            { brand: "ZYDUS", sno: 2, description: "AMLODAC AT TAB 15'S", mrp: 256.40, rate: 183.14 },
+            { brand: "ZYDUS", sno: 3, description: "ATEN 50MG 14'S", mrp: 37.55, rate: 26.82 },
+            { brand: "ZYDUS", sno: 4, description: "ATEN D 10'S", mrp: 131.35, rate: 93.82 },
+            { brand: "ZYDUS", sno: 5, description: "ATORVA 10MG 15'S", mrp: 84.94, rate: 60.67 },
+            { brand: "ZYDUS", sno: 6, description: "GLOBAC-Z SOFTULES 30'S", mrp: 276.59, rate: 197.56 },
+            { brand: "ZYDUS", sno: 7, description: "INDITEL 40 TAB 15'S", mrp: 115.53, rate: 82.52 },
+            { brand: "ZYDUS", sno: 8, description: "LOSACAR 50 TAB 10'S", mrp: 116.87, rate: 83.48 },
+            { brand: "ZYDUS", sno: 9, description: "NUCOXIA MR TAB 10'S", mrp: 368.28, rate: 263.06 },
+            { brand: "ZYDUS", sno: 10, description: "PANTODAC 40 15'S", mrp: 239.90, rate: 171.36 },
+            { brand: "ZYDUS", sno: 11, description: "PRIMOLUT N TAB 10'S", mrp: 61.37, rate: 43.83 },
+            { brand: "ZYDUS", sno: 12, description: "TENGLYN TAB 15'S", mrp: 188.68, rate: 134.77 }
+        ];
+
+        function renderTable(data) {
+            const tableBody = document.getElementById('productTableBody');
+            tableBody.innerHTML = '';
+            
+            data.forEach((product, index) => {
+                const row = document.createElement('tr');
+                row.className = 'bg-white hover:bg-gray-50';
+
+                const formattedMRP = product.mrp.toFixed(2);
+                const formattedRate = product.rate.toFixed(2);
+
+                row.innerHTML = `
+                    <td class="py-3 px-4 whitespace-nowrap text-sm text-gray-900">${index + 1}</td>
+                    <td class="py-3 px-4 whitespace-nowrap text-sm font-medium text-gray-900">${product.brand}</td>
+                    <td class="py-3 px-4 whitespace-nowrap text-sm text-gray-600">${product.description}</td>
+                    <td class="py-3 px-4 whitespace-nowrap text-sm text-gray-600">₹${formattedMRP}</td>
+                    <td class="py-3 px-4 whitespace-nowrap text-sm text-gray-600">₹${formattedRate}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function handleSearch(event) {
+            const searchTerm = event.target.value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.description.toLowerCase().includes(searchTerm) ||
+                product.brand.toLowerCase().includes(searchTerm)
+            );
+            renderTable(filteredProducts);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTable(products);
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', handleSearch);
+        });
+    </script>
+</body>
+</html>
